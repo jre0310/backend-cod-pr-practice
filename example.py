@@ -1,10 +1,9 @@
 def main():
-    x = 4
-    y = 2
+    x = 105
+    y = 278
     print(multiplication(x,y))
-    print("\n")
+    # print(power(x,y))
     print(recMult(x,y))
-    
 
 
 
@@ -16,11 +15,19 @@ def multiplication(x, y):
         count += 1
     return num
 
-def recMult(x , y):
-    if x == 0:
-        return 0
-    elif x == 1:
+def power(x , y):
+    if y < 0:
+        return 0 #error
+    elif y == 1:
         return y
+    else:
+        return x * power(x, y - 1)
+
+def recMult(x, y):
+    if y < 0:
+        return 0 #error
+    elif y == 1:
+        return x
     else:
         return x + recMult(x, y - 1)
     
