@@ -8,7 +8,8 @@ def main():
     # replaceChars("this is a string that I want to change", 'a', "Fizz")
     # print("Hello, " + os.getlogin())
     # fizzBuzz()
-    print(palindromePermutation("racecar!"))
+    # print(palindromePermutation("racecar!"))
+   print(oneAway("pales", "pales"))
 
 """ An algorithm that determines if all characters in a string are unique.
      returns true or false"""
@@ -155,6 +156,77 @@ def palindromePermutation(string):
     else:
         return True
 
+""" Check to see if two given strings are one insert, removal, or replacement away"""
+def oneAway(str1, str2):
+    
+    strList1 = []
+    for x in str1:
+        strList1.append(x)
+    
+    strList2 = []
+    for x in str2:
+        strList2.append(x)
+
+    if str1 == str2:
+        print("They are the same string")
+
+    # if they are one insert, they have to off by one on length 
+    elif (len(strList1) + 1) == len(strList2):
+
+        index1 = 0
+        index2 = 0
+
+        while(index1 < len(strList1) and index2 < len(strList2)):
+            if (strList1[index1] != strList2[index2]):
+                if (index1 != index2):
+                    return False
+                index2 += 1
+            else:
+                index1 += 1
+                index2 += 1
+
+            return True
+
+
+    # if they are one removal they have to be off by one on length
+    elif (len(strList1) - 1) == len(strList2):
+
+        index1 = 0
+        index2 = 0
+
+        while(index1 < len(strList2) and index2 < len(strList1)):
+            if (strList1[index1] != strList2[index2]):
+                if (index1 != index2):
+                    return False
+                index2 += 1
+            else:
+                index1 += 1
+                index2 += 1
+
+            return True
+
+    # if they are one replacement they have to be same length 
+    elif (len(strList1) == len(strList2)):
+
+        differenceCounter = 0
+
+        for x in range(len(strList1)):
+
+            if (strList1[x] != strList2[x]):
+                differenceCounter += 1
+
+        if differenceCounter > 1:
+            return False
+        else:
+            return True
+    
+    else:
+        return False
+        
+        
+
+
+        
 
     
 
