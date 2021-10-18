@@ -7,7 +7,8 @@ def main():
     # reverseString("elguezabal")
     # replaceChars("this is a string that I want to change", 'a', "Fizz")
     # print("Hello, " + os.getlogin())
-    fizzBuzz()
+    # fizzBuzz()
+    print(palindromePermutation("racecar!"))
 
 """ An algorithm that determines if all characters in a string are unique.
      returns true or false"""
@@ -122,6 +123,38 @@ def fizzBuzz():
             print("Buzz")
         else:
             print(num)
+
+""" Given a string, check to see if it is a palindrome of a permutation"""
+def palindromePermutation(string):
+
+    # Make the string into list 
+    stringList = []
+    for x in string:
+        stringList.append(x)
+
+    # Sort to make it easier to work with
+    stringList.sort()
+
+    # count number of times a character appears in the string
+    charCounter = []
+    for x in stringList:
+        counter = 0
+        for y in stringList:
+            if x == y:
+                counter += 1
+        charCounter.append(counter)
+    
+    # iterate through the charCounter, if there are more than one odd number then return false
+    oddCharCount = 0
+    for x in charCounter:
+        if (x % 2 != 0):
+            oddCharCount += 1
+    
+    if oddCharCount > 1:
+        return False
+    else:
+        return True
+
 
     
 
